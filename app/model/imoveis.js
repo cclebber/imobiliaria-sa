@@ -6,10 +6,7 @@ const ImoveisSchema = new Schema({
     cep: Number,
     valor_aluguel: Number,
     valor_iptu: Number,
-    proprietario: {
-        nome: String,
-        _id: ObjectId
-    }
+    proprietario: ObjectId
 })
 
 module.exports = ImoveisSchema;
