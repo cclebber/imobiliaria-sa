@@ -1,4 +1,5 @@
-const Schema = require('mongoose').Schema;
+const {Schema, model} = require('mongoose');
+const ObjectId = require('mongoose').Types.ObjectId;
 
 const ContratosSchema = new Schema({
     data_inicio: Date,
@@ -13,4 +14,4 @@ const ContratosSchema = new Schema({
     },
 })
 
-module.exports = ContratosSchema;
+module.exports = model("contratos", ContratosSchema);
