@@ -15,7 +15,7 @@ const PessoasServices = {
 
         const insert = newPessoa.save();
 
-        if(!insert) throw "erro ao enserir";
+        if(!insert) throw "erro ao inserir";
 
         return insert;
     }

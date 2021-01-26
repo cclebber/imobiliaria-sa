@@ -1,3 +1,4 @@
 const PessoasRoutes = require('./pessoas');
+const ImoveisRoutes = require('./imoveis');
 
-module.exports=[PessoasRoutes];
+module.exports=[PessoasRoutes,ImoveisRoutes];
