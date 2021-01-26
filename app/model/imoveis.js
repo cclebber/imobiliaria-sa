@@ -1,4 +1,5 @@
-const Schema = require('mongoose').Schema;
+const {Schema, model} = require('mongoose');
+const ObjectId = require('mongoose').Types.ObjectId;
 
 const ImoveisSchema = new Schema({
     referecia:String,
@@ -9,4 +10,4 @@ const ImoveisSchema = new Schema({
     proprietario: ObjectId
 })
 
-module.exports = ImoveisSchema;
+module.exports = model("imoveis", ImoveisSchema);
