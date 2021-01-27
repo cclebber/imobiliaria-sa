@@ -3,6 +3,9 @@ const app = express()
 const mongoose = require('mongoose');
 const routes = require('./routes');
 var bodyParser = require('body-parser');
+var cors = require('cors')
+
+app.use(cors())
 
 app.use(bodyParser.json());
 //rotas

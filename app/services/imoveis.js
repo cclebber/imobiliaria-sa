@@ -14,12 +14,32 @@ const ImoveisServices = {
             proprietario: ObjectId(data.proprietario)
         })
 
-        const insert = newImovel.save();
+        const insert = await newImovel.save();
 
         if(!insert) throw "erro ao inserir";
 
         return insert;
+    },
+
+    buscaImoveis : async function(query){
+
+        let queryParse={};
+
+        if(query.referecia) queryParse.referecia = query.referecia;
+        if(query.endereco) queryParse.endereco = query.endereco;
+        if(query.cep) queryParse.cep = query.cep;
+        if(query.valor_aluguel) queryParse.valor_aluguel = query.valor_aluguel;
+        if(query.valor_iptu) queryParse.valor_iptu = query.valor_iptu;
+        if(query.proprietario) queryParse.proprietario = query.proprietario;
+
+        const imoveis = await ImoveisSchema.find(queryParse).limit(10);
+
+        if(!imoveis) throw "erro ao inserir";
+
+        return imoveis;
+
     }
+
 }
 
 module.exports=ImoveisServices;

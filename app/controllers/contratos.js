@@ -10,6 +10,15 @@ const Contratos = {
             console.info(error);
             res.json({ok:false, message:error});
         }
+    },
+
+    buscaContratos: async function(req, res){
+        try {
+            let contratos = await ContratosServices.buscaContratos(req.query);
+            res.json({contratos:contratos});
+        } catch (error) {
+            res.json({ok:false, message:error});
+        }
     }
 
 }
