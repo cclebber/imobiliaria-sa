@@ -2,7 +2,7 @@ const {Schema, model} = require('mongoose');
 const ObjectId = require('mongoose').Types.ObjectId;
 
 const ImoveisSchema = new Schema({
-    referecia:String,
+    referencia:String,
     endereco: String,
     cep: Number,
     valor_aluguel: Number,

@@ -6,11 +6,8 @@ const ImoveisServices = {
 
     insereImovel : async function(data){
 
-
-        let referencia=uid(6);
-
         const newImovel= new ImoveisSchema({
-            referencia:referencia,
+            referencia:uid(6),
             endereco:data.endereco,
             cep:data.cep,
             valor_aluguel:data.valor_aluguel,
