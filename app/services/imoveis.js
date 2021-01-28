@@ -1,12 +1,16 @@
 const ImoveisSchema = require("../model/imoveis");
 const ObjectId = require('mongoose').Types.ObjectId;
+var  uid = require('uid').uid;
 
 const ImoveisServices = {
 
     insereImovel : async function(data){
 
+
+        let referencia=uid(6);
+
         const newImovel= new ImoveisSchema({
-            referecia:data.referecia,
+            referencia:referencia,
             endereco:data.endereco,
             cep:data.cep,
             valor_aluguel:data.valor_aluguel,
@@ -25,8 +29,8 @@ const ImoveisServices = {
 
         let queryParse={};
 
-        if(query.referecia) queryParse.referecia = query.referecia;
-        if(query.endereco) queryParse.endereco = query.endereco;
+        if(query.referencia) queryParse.referencia = query.referencia;
+        if(query.endereco) queryParse.endereco = {$regex:query.endereco, $options:'gi'};
         if(query.cep) queryParse.cep = query.cep;
         if(query.valor_aluguel) queryParse.valor_aluguel = query.valor_aluguel;
         if(query.valor_iptu) queryParse.valor_iptu = query.valor_iptu;

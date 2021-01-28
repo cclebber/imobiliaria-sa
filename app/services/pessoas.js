@@ -24,7 +24,7 @@ const PessoasServices = {
 
         let queryParse={};
 
-        if(query.nome) queryParse.nome = query.nome;
+        if(query.nome) queryParse.nome = {$regex: query.nome, $options: 'gi'};
         if(query.cpf) queryParse.nome = query.cpf;
         if(query.data_nascimento) queryParse.nome = query.data_nascimento;
         if(query.endereco) queryParse.nome = query.endereco;
