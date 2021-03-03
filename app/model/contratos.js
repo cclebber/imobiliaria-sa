@@ -7,10 +7,13 @@ const ContratosSchema = new Schema({
     valor_aluguel: Number,
     valor_caucao: Number,
     data_pagamento: Number,
-    inquilino: ObjectId,
+    inquilino: {
+        type:ObjectId,
+        ref:'pessoas'
+    },
     imovel: {
-        referencia: String,
-        _id: ObjectId
+        type: ObjectId,
+        ref:'imoveis'
     },
 })
 
