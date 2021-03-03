@@ -7,7 +7,10 @@ const ImoveisSchema = new Schema({
     cep: Number,
     valor_aluguel: Number,
     valor_iptu: Number,
-    proprietario: ObjectId
+    proprietario: {
+        type: ObjectId,
+        ref:'pessoas'
+    }
 })
 
 module.exports = model("imoveis", ImoveisSchema);

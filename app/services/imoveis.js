@@ -33,7 +33,7 @@ const ImoveisServices = {
         if(query.valor_iptu) queryParse.valor_iptu = query.valor_iptu;
         if(query.proprietario) queryParse.proprietario = query.proprietario;
 
-        const imoveis = await ImoveisSchema.find(queryParse).limit(10);
+        const imoveis = await ImoveisSchema.find(queryParse).limit(10).populate('proprietario');
 
         if(!imoveis) throw "erro ao inserir";
 

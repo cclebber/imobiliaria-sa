@@ -12,10 +12,7 @@ const ContratosServices = {
             valor_caucao:data.valor_caucao,
             data_pagamento:data.data_pagamento,
             inquilino:ObjectId(data.inquilino),
-            imovel:{
-                _id:ObjectId(data.imovel_id),
-                referencia:data.imovel_referencia
-            }
+            imovel:ObjectId(data.imovel),
         })
 
         const insert = await newContrato.save();
@@ -23,6 +20,35 @@ const ContratosServices = {
         if(!insert) throw "erro ao enserir";
 
         return insert;
+    },
+
+    editarContrato: async (data) =>{
+        let contrato = await ContratosSchema.findById(data.id);
+        if(!contrato) throw "erro ao encontrar o contrato";
+
+        contrato.data_inicio=data.data_inicio;
+        contrato.data_final=data.data_final;
+        contrato.valor_aluguel=data.valor_aluguel;
+        contrato.valor_caucao=data.valor_caucao;
+        contrato.data_pagamento=data.data_pagamento;
+        contrato.inquilino=ObjectId(data.inquilino);
+        contrato.imovel=ObjectId(data.imovel);
+        let save = await contrato.save();
+        if(!save) throw "erro ao editar";
+        return save;
+    },
+    excluirContrato: async (query) => {
+        console.info(query);
+        let contrato = await ContratosSchema.deleteOne({_id:ObjectId(query.id)})
+        console.info(contrato);
+        if(!contrato) throw "erro ao excluir";
+        return contrato;
+    },
+
+    buscaContrato: async (query) =>{
+        let contrato=await ContratosSchema.findById(query.id).populate('inquilino').populate('imovel');
+        if(!contrato) throw "erro ao consultar"
+        return contrato;
     },
 
     buscaContratos : async function(query){
@@ -34,15 +60,15 @@ const ContratosServices = {
         if(query.cep) queryParse.cep = query.cep;
         if(query.valor_aluguel) queryParse.valor_aluguel = query.valor_aluguel;
         if(query.valor_iptu) queryParse.valor_iptu = query.valor_iptu;
-        if(query.proprietario) queryParse.proprietario = query.proprietario;
+        if(query.inquilino) queryParse.inquilino = query.inquilino;
 
-        const contratos = await ContratosSchema.find(queryParse).limit(10);
+        const contratos = await ContratosSchema.find(queryParse).limit(10).populate('inquilino').populate('imovel');
 
-        if(!contratos) throw "erro ao inserir";
+        if(!contratos) throw "erro ao consultar";
 
         return contratos;
-
     }
+
 }
 
 module.exports=ContratosServices;
