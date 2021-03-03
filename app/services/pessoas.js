@@ -20,6 +20,34 @@ const PessoasServices = {
         return insert;
     },
 
+    editarPessoa: async (data) =>{
+        let pessoa = await PessoasSchema.findById(data.id);
+        if(!pessoa) throw "erro ao encontrar a pessoa";
+
+        pessoa.nome=data.nome;
+        pessoa.cpf=data.cpf;
+        pessoa.data_nascimento=data.data_nascimento;
+        pessoa.endereco=data.endereco;
+        pessoa.pix=data.pix;
+        pessoa.contato=data.contato;
+        let save = await pessoa.save();
+        if(!save) throw "erro ao editar";
+        return save;
+    },
+
+    excluirPessoa: async (query) => {
+        console.info(query);
+        let pessoa = await PessoasSchema.deleteOne({_id:ObjectId(query.id)})
+        console.info(pessoa);
+        if(!pessoa) throw "erro ao excluir";
+        return pessoa;
+    },
+
+    buscaPessoa: async (query) =>{
+        if(!pessoa) throw "erro ao consultar"
+        return pessoa;
+    },
+
     buscaPessoas : async function(query){
 
         let queryParse={};
