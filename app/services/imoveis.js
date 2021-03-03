@@ -1,4 +1,5 @@
 const ImoveisSchema = require("../model/imoveis");
+const ContratosSchema = require("../model/contratos");
 const ObjectId = require('mongoose').Types.ObjectId;
 var  uid = require('uid').uid;
 
@@ -20,6 +21,40 @@ const ImoveisServices = {
         if(!insert) throw "erro ao inserir";
 
         return insert;
+    },
+    editarImovel: async (data) =>{
+        let imovel = await ImoveisSchema.findById(data.id);
+        if(!imovel) throw "erro ao encontrar o imóvel";
+
+        imovel.data_inicio=data.endereco;
+        imovel.data_final=data.cep;
+        imovel.valor_aluguel=data.valor_aluguel;
+        imovel.valor_caucao=data.valor_aluguel;
+        imovel.data_pagamento=data.valor_iptu;
+        imovel.proprietario=ObjectId(data.proprietario);
+        let save = await imovel.save();
+        if(!save) throw "erro ao editar";
+        return save;
+    },
+    excluirImovel: async (query) => {
+        let imovel = await ImoveisSchema.findById(query.id);
+        if(!imovel) throw "imovel não encontrado";
+
+        let contrato= await ContratosSchema.findOne({imovel:imovel._id})
+        if(contrato) throw "existe um contrato vinculado a esse imóvel";
+
+        let exclude = await imovel.remove();
+        if(!exclude) throw "não foi possivel deletar esse imóvel";
+
+        return imovel;
+    },
+
+    buscaImovel: async (query) =>{
+        let imovel=await ImoveisSchema.findById(query.id).populate('proprietario').lean();
+        if(!imovel) throw "erro ao consultar"
+        let contrato= await ContratosSchema.findOne({imovel:imovel._id})
+        if(contrato) imovel.notExclude=true;
+        return imovel;
     },
 
     buscaImoveis : async function(query){

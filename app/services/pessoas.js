@@ -1,4 +1,7 @@
 const PessoasSchema = require("../model/pessoas");
+const ContratosSchema = require("../model/contratos");
+const ImoveisSchema = require("../model/imoveis");
+const ObjectId = require('mongoose').Types.ObjectId;
 
 const PessoasServices = {
 
@@ -36,15 +39,30 @@ const PessoasServices = {
     },
 
     excluirPessoa: async (query) => {
-        console.info(query);
-        let pessoa = await PessoasSchema.deleteOne({_id:ObjectId(query.id)})
-        console.info(pessoa);
-        if(!pessoa) throw "erro ao excluir";
-        return pessoa;
+        let pessoa = await PessoasSchema.findById(query.id);
+        if(!pessoa) throw "erro ao encontrar a pessoa";
+
+        let imovel = await ImoveisSchema.findOne({proprietario:pessoa._id})
+        if(imovel) throw "a pessoa possui um vinculo de imóvel";
+
+        let contrato = await ContratosSchema.findOne({inquilino:pessoa._id})
+        if(contrato) throw "a pessoa possui um vinculo de contrato";
+
+        let excluir = pessoa.remove();
+        if(!excluir) throw "erro ao excluir";
+        return excluir;
     },
 
     buscaPessoa: async (query) =>{
+        let pessoa = await PessoasSchema.findById(query.id).lean()
         if(!pessoa) throw "erro ao consultar"
+
+        let imovel = await ImoveisSchema.findOne({proprietario:pessoa._id})
+        if(imovel) pessoa.notExclude=true;
+
+        let contrato = await ContratosSchema.findOne({inquilino:pessoa._id})
+        if(contrato) pessoa.notExclude=true;
+
         return pessoa;
     },
 
