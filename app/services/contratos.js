@@ -1,4 +1,5 @@
 const ContratosSchema = require("../model/contratos");
+const PessoasSchema = require("../model/pessoas");
 const ObjectId = require('mongoose').Types.ObjectId;
 const pdf = require('pdf-creator-node')
 const fs = require('fs')
@@ -75,8 +76,13 @@ const ContratosServices = {
 
      
 
-        let contrato=await ContratosSchema.findById(query.id).populate('inquilino').populate('imovel').lean();
+        let contrato=await ContratosSchema.findById(query.id).populate('inquilino').populate('imovel').populate('imovel.proprietario').lean();
         if(!contrato) throw "erro ao consultar"
+
+        contrato.imovel.proprietario = await PessoasSchema.findById(contrato.imovel.proprietario).lean();
+        if(!contrato.imovel.proprietario) throw "erro ao encontrar o proprietario";
+
+        console.info(contrato);
 
         const html = fs.readFileSync('public/contrato.html').toString()
         
