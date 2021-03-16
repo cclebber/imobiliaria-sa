@@ -5,6 +5,9 @@ const routes = require('./routes');
 var bodyParser = require('body-parser');
 var cors = require('cors')
 
+
+app.use(express.static('../public'));
+
 app.use(cors())
 
 app.use(bodyParser.json());

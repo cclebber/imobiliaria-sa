@@ -1,5 +1,7 @@
 const ContratosSchema = require("../model/contratos");
 const ObjectId = require('mongoose').Types.ObjectId;
+const pdf = require('pdf-creator-node')
+const fs = require('fs')
 
 const ContratosServices = {
 
@@ -67,6 +69,32 @@ const ContratosServices = {
         if(!contratos) throw "erro ao consultar";
 
         return contratos;
+    },
+
+    imprimirContrato: async function(query) {
+
+     
+
+        let contrato=await ContratosSchema.findById(query.id).populate('inquilino').populate('imovel').lean();
+        if(!contrato) throw "erro ao consultar"
+
+        const html = fs.readFileSync('public/contrato.html').toString()
+        
+        const options = {
+            format: 'A4',
+            orientation: 'portrait'
+        }
+
+        const document = {
+            html: html,
+            data: contrato,
+            type:'buffer'
+        }
+
+        const buffer= await pdf.create(document, options).then()
+        if(!buffer) throw "erro ao gerar o pdf"
+        return buffer;
+
     }
 
 }

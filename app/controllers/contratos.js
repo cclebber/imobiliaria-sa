@@ -43,7 +43,14 @@ const Contratos = {
         } catch (error) {
             res.json({ok:false, message:error});
         }
-    }
+    },
+    imprimirContrato: async (req, res) => {
+        try {
+            res.end(await ContratosServices.imprimirContrato(req.params));
+        } catch (error) {
+            res.json({ok:false, message:error});
+        }
+    },
 
 }
 
