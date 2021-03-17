@@ -8,6 +8,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "html-pdf": "^2.2.0",
+    "moment": "^2.29.1",
     "mongoose": "^5.11.13",
     "pdf-creator-node": "^2.2.2",
     "uid": "^2.0.0"

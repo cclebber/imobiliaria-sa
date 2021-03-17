@@ -3,6 +3,7 @@ const PessoasSchema = require("../model/pessoas");
 const ObjectId = require('mongoose').Types.ObjectId;
 const pdf = require('pdf-creator-node')
 const fs = require('fs')
+var moment = require('moment');
 
 const ContratosServices = {
 
@@ -99,7 +100,11 @@ const ContratosServices = {
         if(!contrato.imovel.proprietario) throw "erro ao encontrar o proprietario";
 
         console.info(contrato);
-
+        contrato.data_inicio = moment(contrato.data_inicio).format('DD/MM/YYYY');
+        contrato.data_final = moment(contrato.data_final).format('DD/MM/YYYY');
+        contrato.inquilino.data_nascimento = moment(contrato.inquilino.data_nascimento).format('DD/MM/YYYY');
+        contrato.imovel.proprietario.data_nascimento = moment(contrato.imovel.proprietario.data_nascimento).format('DD/MM/YYYY');
+       
         const html = fs.readFileSync('public/contrato.html').toString()
         
         const options = {
