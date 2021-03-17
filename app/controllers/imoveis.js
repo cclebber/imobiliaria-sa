@@ -4,7 +4,7 @@ const Imoveis = {
 
     insereImovel: async function(req, res){        
         try {
-            ImoveisServices.insereImovel(req.body);
+            await ImoveisServices.insereImovel(req.body);
             res.json({ok:true, message:'Incluido com sucesso'});
         } catch (error) {
             res.json({ok:false, message:error});
@@ -20,10 +20,9 @@ const Imoveis = {
     },
     editarImovel: async (req, res) => {
         try {
-            ImoveisServices.editarImovel(req.body);
+            await ImoveisServices.editarImovel(req.body);
             res.json({ok:true, message:'Editado com sucesso'});
         } catch (error) {
-            console.info(error);
             res.json({ok:false, message:error});
         }
     },

@@ -2,9 +2,9 @@ const ContratosServices = require("../services/contratos");
 
 const Contratos = {
 
-    insereContrato: function(req, res){        
+    insereContrato: async function(req, res){        
         try {
-            ContratosServices.insereContrato(req.body);
+            await ContratosServices.insereContrato(req.body);
             res.json({ok:true, message:'Incluido com sucesso'});
         } catch (error) {
             console.info(error);
@@ -20,7 +20,7 @@ const Contratos = {
     },
     editarContrato: async (req, res) => {
         try {
-            ContratosServices.editarContrato(req.body);
+            await ContratosServices.editarContrato(req.body);
             res.json({ok:true, message:'Editado com sucesso'});
         } catch (error) {
             console.info(error);

@@ -12,7 +12,7 @@ const ImoveisSchema = new Schema({
         required:[true, 'Endereço é um campo obrigatrório!']
     },
     cep: {
-        type:Number,
+        type:String,
         required:[true, 'CEP é um campo obrigatrório!'],
         validate: {
             validator: function(v) {

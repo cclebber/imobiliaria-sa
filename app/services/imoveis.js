@@ -7,13 +7,17 @@ const ImoveisServices = {
 
     insereImovel : async function(data){
 
+        if(data.valor_iptu) data.valor_iptu=data.valor_iptu*1;
+        if(data.valor_aluguel) data.valor_aluguel=data.valor_aluguel*1;
+        if(data.proprietario) data.proprietario=ObjectId(data.proprietario);
+
         const newImovel= new ImoveisSchema({
             referencia:uid(6),
             endereco:data.endereco,
             cep:data.cep,
             valor_aluguel:data.valor_aluguel,
             valor_iptu:data.valor_iptu,
-            proprietario: ObjectId(data.proprietario)
+            proprietario: data.proprietario
         })
 
         const insert = await newImovel.save();
@@ -26,12 +30,16 @@ const ImoveisServices = {
         let imovel = await ImoveisSchema.findById(data.id);
         if(!imovel) throw "erro ao encontrar o imóvel";
 
-        imovel.data_inicio=data.endereco;
-        imovel.data_final=data.cep;
+        if(data.valor_iptu) data.valor_iptu=data.valor_iptu*1;
+        if(data.valor_aluguel) data.valor_aluguel=data.valor_aluguel*1;
+        if(data.proprietario) data.proprietario=ObjectId(data.proprietario);
+
+        imovel.endereco=data.endereco;
+        imovel.cep=data.cep;
         imovel.valor_aluguel=data.valor_aluguel;
-        imovel.valor_caucao=data.valor_aluguel;
-        imovel.data_pagamento=data.valor_iptu;
-        imovel.proprietario=ObjectId(data.proprietario);
+        imovel.valor_iptu=data.valor_iptu;
+        imovel.proprietario=data.proprietario;
+
         let save = await imovel.save();
         if(!save) throw "erro ao editar";
         return save;

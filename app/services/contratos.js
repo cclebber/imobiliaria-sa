@@ -6,7 +6,15 @@ const fs = require('fs')
 
 const ContratosServices = {
 
-    insereContrato : async function(data){
+    insereContrato : async (data) => {
+
+        if(data.valor_caucao) data.valor_caucao=data.valor_caucao*1;
+        if(data.valor_aluguel) data.valor_aluguel=data.valor_aluguel*1;
+        if(data.data_pagamento) data.data_pagamento=data.data_pagamento*1;
+        if(data.data_inicio) data.data_inicio=new Date(data.data_inicio);
+        if(data.data_final) data.data_final=new Date(data.data_final);
+        if(data.inquilino) data.inquilino=ObjectId(data.inquilino);
+        if(data.imovel) data.imovel=ObjectId(data.imovel);
 
         const newContrato= new ContratosSchema({
             data_inicio:data.data_inicio,
@@ -14,8 +22,8 @@ const ContratosServices = {
             valor_aluguel:data.valor_aluguel,
             valor_caucao:data.valor_caucao,
             data_pagamento:data.data_pagamento,
-            inquilino:ObjectId(data.inquilino),
-            imovel:ObjectId(data.imovel),
+            inquilino:data.inquilino,
+            imovel:data.imovel,
         })
 
         const insert = await newContrato.save();
@@ -29,13 +37,21 @@ const ContratosServices = {
         let contrato = await ContratosSchema.findById(data.id);
         if(!contrato) throw "erro ao encontrar o contrato";
 
+        if(data.valor_caucao) data.valor_caucao=data.valor_caucao*1;
+        if(data.valor_aluguel) data.valor_aluguel=data.valor_aluguel*1;
+        if(data.data_pagamento) data.data_pagamento=data.data_pagamento*1;
+        if(data.data_inicio) data.data_inicio=new Date(data.data_inicio);
+        if(data.data_final) data.data_final=new Date(data.data_final);
+        if(data.inquilino) data.inquilino=ObjectId(data.inquilino);
+        if(data.imovel) data.imovel=ObjectId(data.imovel);
+
         contrato.data_inicio=data.data_inicio;
         contrato.data_final=data.data_final;
         contrato.valor_aluguel=data.valor_aluguel;
         contrato.valor_caucao=data.valor_caucao;
         contrato.data_pagamento=data.data_pagamento;
-        contrato.inquilino=ObjectId(data.inquilino);
-        contrato.imovel=ObjectId(data.imovel);
+        contrato.inquilino=data.inquilino;
+        contrato.imovel=data.imovel;
         let save = await contrato.save();
         if(!save) throw "erro ao editar";
         return save;

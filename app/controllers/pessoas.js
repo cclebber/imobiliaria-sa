@@ -19,7 +19,7 @@ const Pessoas = {
     },
     editarPessoa: async (req, res) => {
         try {
-            PessoasServices.editarPessoa(req.body);
+            await PessoasServices.editarPessoa(req.body);
             res.json({ok:true, message:'Editado com sucesso'});
         } catch (error) {
             console.info(error);
