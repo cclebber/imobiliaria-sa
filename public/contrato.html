@@ -1,14 +1,161 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt">
 <head>
-    <mate charest="utf-8" />
-    <title>Contrato {{this.inquilino.nome}}!</title>
+<title>INSTRUMENTO PARTICULAR DE CONTRATO DE LOCAÇÃO</title>
+
 </head>
+
 <body>
-    <h1>User List</h1>
-    <ul>
-    <li>Name: {{this.inquilino.nome}}</li>
-    <li>Age: {{this.data_final}}</li>
-    <br />
-    </ul>
+
+<h5><b>INSTRUMENTO PARTICULAR DE CONTRATO DE LOCAÇÃO</b></h5>
+<h2><b>LOCADOR:</b></h2>
+
+<p><b>{{this.imovel.proprietario.nome}}</b>, nascido em {{this.imovel.proprietario.data_nascimento}},portador do CPF <b>Nº {{this.imovel.proprietario.cpf}}</b>,
+residente e domiciliado na <b>{{this.imovel.proprietario.endereco}}</b>, ora
+em diante denominado simplesmente <b>LOCADOR.</b></p>
+
+<p ><b>Tel. {{this.imovel.proprietario.contato}}</b></p>
+
+<h2><b>LOCATÁRIO:</b></h2>
+
+<p><b>{{this.inquilino.nome}}</b>, nascido em {{this.inquilino.data_nascimento}},portador do CPF <b>Nº {{this.inquilino.cpf}}</b>,
+residente e domiciliado na <b>{{this.inquilino.endereco}}</b>, ora em diante denominado simplesmente <b>LOCADOR.</b></p>
+
+<p><b>Tel. {{this.inquilino.contato}}</b></p>
+
+<h2><b>OBJETO DA LOCAÇÃO:</b></h2>
+
+<p >A locação aqui contratada refere-se ao imóvel, situado à <b>{{this.imovel.endereco}}</b>, <b>CEP {{this.imovel.cep}}</b> de propriedade do LOCADOR, sob as seguintes
+cláusulas:</p>
+
+
+
+<p>1ª.} A locação terá início no dia <b >{{this.data_inicio}},
+</b>encerrando-se no dia <b>{{this.data_final}}</b>, 
+data em que o LOCATÁRIO se obriga a entregar o imóvel livre e desembaraçado de pessoas e coisas, independente de qualquer aviso, notificação ou interpelação judicial ou extrajudicial, sendo que quaisquer benfeitorias feitas pelo LOCATÁRIO e aceitas pelo LOCATÁRIO, permanecerão no imóvel, semdireito de pedido de indenizações pelo LOCATÁRIO.</p>
+
+<p >PARÁGRAFO 1º.
+(PRIMEIRO) – O presente contrato será renovado automaticamente por mais 12 (doze)
+meses, continuadamente até a desocupação do imóvel, sofrendo os reajustes
+previstos da cláusula 2ª do parágrafo 1º deste contrato.</p>
+
+<p>2ª.} O aluguel inicial mensal é de <b>R$ {{this.valor_aluguel}</b> e o IPTU inicial mensal é de <b>R$
+{{this.imovel.valor_iptu}</b>, o pagamento deverá ser efetuado até o <b>dia {{this.data_pagamento} de cada mês</b>
+diretamente ao proprietário ou por depósito na conta PIX de chave <b>{{this.imovel.proprietario.pix}</b></p>
+
+<p>em conta bancária por ele estipulado.
+Ultrapassando este prazo será cobrada uma multa de 10% (Dez por cento),
+calculada sobre o débito corrigido, que nele se incorporará desde logo para
+todos os efeitos de direito e se o atraso for superior a 30 (Trinta) dias, o
+aluguel terá correção mensal de 1%. O LOCATÁRIO desde já concorda que eventual correção
+no valor do aluguel e multa por atraso de pagamento de aluguel, e não paga pelo
+mesmo, será abatida do valor das cauções quando da restituição das mesmas. </p>
+
+
+<p >PARÁGRAFO 1º. (PRIMEIRO) - O aluguel será
+reajustado anualmente (Salvo mudança pelo governo) de acordo com o Índice
+Governamental I.G.P-M (F.G.V) ou outro, indicado pelo Governo, prevalecendo
+sempre o maior deles.</p>
+
+
+<p>PARÁGRAFO 2º.
+(SEGUNDO) – Se o LOCADOR admitir, em benefício do LOCATÁRIO, qualquer atraso no
+pagamento do aluguel e demais despesas que lhe incumba, ou no cumprimento de
+qualquer obrigação contratual, essa tolerância não poderá ser considerada como
+alteração das condições deste contrato, pois se constituirá apenas como mera
+liberalidade do LOCADOR.</p>
+
+<p>PARÁGRAFO 3º.
+(TERCEIRO) - Quando o aluguel for pago através de boleto bancário, o custo
+deste será suportado pelo LOCATÁRIO.</p>
+
+<p>PARÁGRAFO 4º.
+(QUARTO) - Como garantia contratual e para substituição de fiador, o LOCATÁRIO,
+pagará ao LOCADOR um valor de <b>R$ {{this.valor_aluguel}</b>, referente a caução
+contratual. Este montante, abatido dos valores de multas, previstos na cláusula
+2, bem serviços de reforma e pintura, contas de
+água e luz, vencidas ou proporcionais será devolvido para o LOCATÁRIO,
+corrigido pela poupança no término do contrato.</p>
+
+<p>PARÁGRAFO 5º. (QUINTO) – Dois meses em atraso no pagamento do aluguel, passa a acarretar em quebra deste contrato, dando direito ao locador de exigir a desocupação do imóvel por falta de pagamento e a exigência de quitação imediata dos valores devidos.</p>	
+
+<p>3ª.} O LOCATÁRIO pagará integralmente ao locador todos os impostos, taxas, IPTU, contribuições e encargos que incidem ou venham a incidir sobre os imóveis ora locados, bem como às concessionárias de serviços todas as despesas de consumo de água, luz, gás, internet, telefone e TV. O pagamento de tais ônus se fará na medida em que se tornem exigíveis, juntamente com o aluguel do mês correspondente. O LOCATÁRIO será também responsável por despesas de multas decorrentes de eventuais retenções dos avisos de impostos, taxas e outros encargos que já incidem ou venham a incidir sobre o imóvel. O LOCATÁRIO declara, outrossim, ter pleno conhecimento de que o resgate dos recibos posteriores não significa nem representa quitação de outras obrigações estipuladas neste contrato, deixadas de cobrar por qualquer circunstâncias nas épocas certas, principalmente os encargos fixados neste contrato.</p>
+
+<p>4ª.} Os imóvel ora alugado, apenas poderá ser usado para fins RESIDENCIAIS, expressamente vedada qualquer destinação adversa, ainda que não contrária a moral e aos bons costumes.</p>
+<p>5ª.} O LOCATÁRIO declara já ter vistoriado o imóvel, estando o mesmo na mais perfeita ordem, e se obriga a mantê-lo em perfeitas condições de conservação e limpeza, restituindo-o no mesmo estado, zelando particularmente pelo bom estado e integridade por todos e quaisquer outros aparelhos, instalações, partes integrantes ou acessórios de imóvel. O LOCATÁRIO fará a sua custa, sem direito a qualquer indenização, a reparação de todos os danos verificados no imóvel ora alugado ou de qualquer vizinho, ocasionados inclusive por seus dependentes, visitas ou empregados.  Fica o locador com o direito de inspecionar o imóvel para verificar seu estado de conservação quando lhe convier, mediante prévio aviso da hora designada para a visita. O LOCATÁRIO obriga-se também a entregar o imóvel nas mesmas condições em que recebeu. Também é proibido a instalação de antenas de rádio ou TV nos telhados e a guarda ou manuseio de explosivos ou produtos químicos no imóvel.</p>
+
+<p>PARÁGRAFO 1º. (PRIMEIRO) - Obriga-se o LOCATÁRIO pela contratação de seguro contra incêndio, explosão e danos elétricos, e ao pagamento do prêmio à seguradora, referente ao imóvel locado, sobre pena de em caso de sinistro, responder por perdas e danos materiais e civis ao LOCADOR ou a terceiros.</p>
+ 
+<p>PARÁGRAFO 2º. (SEGUNDO) -  É facultado ao LOCADOR recusar o recebimento do imóvel sem que o mesmo esteja em perfeitas condições, como entregou ao LOCATÁRIO, no início da locação; isto ocorrendo, continuarão por conta do LOCATÁRIO os alugueis até a data que este restituir o imóvel nas condições em que recebeu, inclusive todos os encargos previsto na cláusula 3ª.(terceira).</p>
+
+<p>PARÁGRAFO 3º. (TERCEIRO) - Obriga-se o LOCATÁRIO a transferir para seu nome a titularidade da conta de energia elétrica em até 7 dias após a assinatura do contrato.</p>
+
+<p>PARÁGRAFO 4º. (QUARTO) - Obriga-se o LOCATÁRIO a informar ao LOCADOR 30 dias antes da saída do imóvel, sua pretensão de sair do imóvel, seu novo endereço, email e telefones de contato, para que o contrato seja encerrado.</p>
+
+<p>PARÁGRAFO 5º. (QUINTO) – Com exceção das obras necessárias à segurança do imóvel, todas as outras correrão por conta do LOCATÁRIO, inclusive reparos em fechaduras, torneiras, tanque, esquadrias, pias, caixa d`água, trincos, danos elétricos, etc..., desentupimento de rede de água, esgoto e gás.</p>
+
+<p>PARÁGRAFO 6º. (SEXTO) – o LOCATÁRIO autoriza expressamente o LOCADOR a efetuar o corte, a religação e a alteração de nome da conta de energia elétrica, para o nome do LOCATÁRIO.</p>
+
+<p>PARÁGRAFO 7º. (SÉTIMO) – É expressamente proibido, ao LOCATÁRIO a criação de animais domésticos no imóvel locado, afim de não perturbar a vizinhança. O descumprimento desta cláusula implica em multa contratual de 50% do valor da locação
+mensal, por mês de descumprimento desta cláusula, desde a primeira notificação	até que o problema seja solucionado. </p>
+
+<p>PARÁGRAFO 8º. (OITAVO) – O LOCADOR está autorizado a executar serviços de manutenção no imóvel mesmo que esta seja de responsabilidade do LOCATÁRIO, e cobrar deste os valores dos serviços executados, como encargos de locação.</p>
+
+<p>PARÁGRAFO 9º. (NONO) – A garagem quando destinada ao LOCATÁRIO é uma mera cortesia do LOCADOR, não sendo o LOCADOR, responsável, seja por furto, roubo, ou qualquer dano causado ao seu veículo, por terceiros, por qualquer agente externo, ou por outro veículo de  imóvel adjacente.</p>
+
+<p>PARÁGRAFO 10º. (DEZ) – o LOCATÁRIO autoriza expressamente o LOCADOR a efetuar o corte, a religação e a alteração de nome da conta de água junto à concessionária, para o nome do LOCATÁRIO.</p>
+ 
+<p>6ª.} Caso o imóvel não se encontre nas condições especificadas na cláusula 5ª. (quinta) o LOCATÁRIO se obriga a dar conhecimento, por escrito, ao LOCADOR ou seu procurador, dos defeitos encontrados, o que ficará fazendo parte integrante deste contrato, entendendo-se que somente terá valor tal reclamação se feitas até 3 (três) dias após a assinatura do presente contrato.</p>
+
+<p>7ª.} O LOCATÁRIO não poderá fazer no imóvel modificação alguma ou obra, sem prévio e expresso consentimento, por escrito, do LOCADOR. Quaisquer benfeitorias que sejam realizadas, mesmo com autorização do LOCADOR, ficarão incorporada, desde logo, ao imóvel, sem qualquer direito de indenização por parte do LOCADOR. Fica ressalvado ao LOCADOR ainda que autorize as modificações, exigir ao LOCATÁRIO, por sua exclusiva conta, reponha o imóvel em seu estado anterior, uma vez finda a locação.</p>
+
+<p>8ª.} Ao LOCATÁRIO é vedado ceder ou transferir o presente contrato, ainda que gratuitamente, sem o consentimento expresso e por escrito do LOCADOR, assim como sublocar ou emprestar no todo ou em parte, ou dar em comodato os imóveis da presente locação. É também expressamente proibido ao LOCATÁRIO ter no imóvel, embora em caráter temporário, a guarda ou depósito de explosivos ou inflamáveis.</p>
+
+<p>9ª.} O presente contrato considerar-se a rescindido de pleno direito, por força do disposto nesta cláusula, nos seguintes casos: a:) transgressão de disposições legais ou infração de qualquer das cláusulas estipuladas no presente contrato, b:) desapropriação do imóvel por necessidade ou utilidade pública, ressalvados os direitos que houverem decorridos até a
+efetivação do ato expropriatório; c:) ocorrência de qualquer sinistro, inclusive incêndio. Que torne inabitável no todo ou em parte.</p>
+<p>10ª.} Sem prejuízo da rescisão do contrato, a parte que infringir qualquer de suas cláusulas, incidirá na multa penal moratória de valor equivalente à (três) aluguéis vigente na época da infração, e cobrável judicalmente, mediante ação de execução inerente ao caso. O LOCATÁRIO se compromete a notificar por escrito ao LOCADOR, com 30 (trinta) dias de antecedência, a sua desocupação do imóvel.</p>
+
+<p>11ª.} Fica acordado entre as partes, que após decorridos um ano de locação, o LOCATÁRIO poderá desocupar o imóvel, bem como o LOCADOR poderá pedir a desocupação do imóvel, ambos  isentos de multa contratual.</p>
+
+<p>PARÁGRAFO 1º. (PRIMEIRO) – Se o LOCATÁRIO sair do imóvel antes do término do contrato, o mesmo pagará ao LOCADOR a multa contratual, independente do prazo faltante para o término deste contrato, ficando claro que o pagamento da multa não exime o pagamento de aluguéis atrasados.</p>
+
+<p>12ª.} O presente Contrato só se considera rescindido depois que o locador vistoriar o imóvel, e verificar o exato cumprimento das obrigações do LOCATÁRIO quanto à conservação do imóvel locado, nos termos da cláusula 5ª (quinta) e seu parágrafo único, e depois fazer prova do pagamento da conta final de luz, condomínio, água, IPTU, etc.</p>
+
+<p>PARÁGRAFO 1º. (PRIMEIRO) – O LOCATÁRIO autoriza desde já o LOCADOR a descontar da caução a restituir, os valores necessários para a reforma do imóvel, pagamento de contas atrasadas, ou qualquer despesa que o locado tiver para recompor o imóvel nas condições originais que o LOCATÁRIO recebeu no início do contrato. </p>
+
+<p>PARÁGRAFO 2º. (SEGUNDO) - Se o contrato possuir mais de um LOCATÁRIO, ambos estão cientes  que nenhum deles estará isento de multas contratuais, caso deixem de habitar o imóvel antes do término deste contrato.</p>
+
+<p>13ª.} Tudo o que for devido em razão deste contrato será cobrado em processo executivo ou em ação apropriada, no fórum desta cidade, correndo por conta de devedor, além do principal e da multa e demais encargos, todas as despesas judiciais e extrajudiciais, e 20% (vinte por cento) de honorários de advogado, não podendo o LOCATÁRIO se opor ao seu pagamento, sobre pretexto algum, desde que esteja em atraso no pagamento de aluguéis.</p>
+
+<p>14ª.} As citações, intimações ou notificações poderão ser feitas mediante correspondência ou aviso de recebimento, e também mediante  fax símile ou ainda sendo necessários, pelas demais formas previstas no Código de processo Civil item IV do art. 58 Lei nº 8.245/91).</p>
+
+<p>15ª.} As partes declaram que aceitam o presente contrato na forma como foi redigido.</p>
+
+<p>16ª.} O LOCATÁRIO abre mão da compra do imóvel e dispensa notificação, conforme a lei, cumprindo o contrato e liberando para visitação do imóvel.</p>
+<p>17ª.} Elegem as partes o foro desta cidade para dirimir quaisquer dúvidas oriunda do presente contrato, que é obrigatório para as partes, seus herdeiros e sucessores.</p>
+     
+<p>E por estarem assim juntos e contratados, assinam o presente em 2 (Duas) vias de igual teor, que leram e acharam conforme, tudo na presença das testemunhas abaixo assinadas.</p>
+
+<h2><b>{{this.data_inicio}}</b></h2>
+
+<p>LOCADOR:                                                      _____________________________
+
+
+
+</p>
+<p>LOCATÁRIO:                                                    _____________________________
+
+
+    
+</p>                                             
+<p>TESTEMUNHAS:                                                  _____________________________
+
+
+
+                                                                 _____________________________
+  
+</p>                           
+
 </body>
+
 </html>
